@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Card {
    private String face;
    private String suit;
@@ -35,3 +37,24 @@ public class DeckOfCards
          deck[ count ] =
             new Card( faces[ count % 13 ], suits[ count / 13 ] );
    } // end DeckOfCards constructor
+   
+   // shuffle deck of Cards with one-pass algorithm
+   public void shuffle()
+   {
+      // after shuffling, dealing should start at deck[ 0 ] again
+      currentCard = 0; // reinitialize currentCard
+ 
+      // for each Card, pick another random Card and swap them
+      for ( int first = 0; first < deck.length; first++ )
+      {
+         // select a random number between 0 and 51
+         int second =  randomNumbers.nextInt( NUMBER_OF_CARDS );
+         
+         // swap current Card with randomly selected Card
+         Card temp = deck[ first ];        
+         deck[ first ] = deck[ second ];  
+         deck[ second ] = temp;            
+      } // end for
+   } // end method shuffle
+   
+  }
