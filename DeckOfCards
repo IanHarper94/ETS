@@ -1,5 +1,23 @@
 import java.util.Random;
 
+public class CardGame
+{
+  // arguments are passed using the text field below this editor
+  public static void main(String[] args)
+  {
+    DeckOfCards deck = new DeckOfCards();
+    deck.shuffle();
+   
+    Card c = deck.dealOneCard();
+    while (c != null) {
+      c.printIt();
+      c = deck.dealOneCard();
+    }
+   
+    System.out.println("All Cards were dealt");
+  }
+}
+
 public class Card {
    private String face;
    private String suit;
